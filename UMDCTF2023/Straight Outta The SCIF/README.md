@@ -32,6 +32,27 @@ cho ra được các thông tin như thế:
 
 ![image](https://user-images.githubusercontent.com/113530029/235420589-66dcae07-bb64-421c-a8eb-aa6b0260d447.png)
 
-Để ý thấy các số trong serial khá giống ascii, extract nó ra:
+Để ý thấy các số trong serial khá giống ascii. Thực hiện tiếp như sau:
 
+Save phần serial vào 1 file txt tên 'serialsave':
+
+`for i in {01..15}; do deda_parse_print scan-$i.png | grep serial; done | awk '{print $2}' > serialsave`
+
+Chạy code python sau để lấy giá trị ascii:
+
+with open('serialsave', 'r') as f:
+        data = f.readlines()
+
+```
+for line in data:
+        if line[1] == '0':
+                print(chr(int(line[4:7])), end = "")
+        else:
+                print(chr(int(line[1:3])), end = "")
+                print(chr(int(line[5:7])), end = "")
+```
+
+![image](https://user-images.githubusercontent.com/113530029/235462085-abe1e820-6c61-4aeb-baf3-da674d70c2c1.png)
+
+Flag : `UMDCTF{COMMON_TEAM_ROCKET_L}`
 
