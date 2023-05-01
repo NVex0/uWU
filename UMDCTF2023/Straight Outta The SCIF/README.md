@@ -40,10 +40,10 @@ Save phần serial vào 1 file txt tên 'serialsave':
 
 Chạy code python sau để lấy giá trị ascii:
 
+```
 with open('serialsave', 'r') as f:
         data = f.readlines()
 
-```
 for line in data:
         if line[1] == '0':
                 print(chr(int(line[4:7])), end = "")
