@@ -26,5 +26,8 @@ cho ra được các thông tin như thế:
 
 ![image](https://user-images.githubusercontent.com/113530029/235314655-d8305211-9f9a-40aa-a643-8bad5ab434b0.png)
 
-Để ý phần serial (hoặc printer) khá sus, ta lấy hết serial của toàn bộ 15 ảnh trang PDF ra:
+Để ý phần serial (hoặc printer) khá sus, ta lấy hết serial của toàn bộ 15 ảnh trang PDF ra với command:
 
+`for i in {01..15`}; do deda_parse_print scan-$i.png | grep serial; done`
+
+![image](https://user-images.githubusercontent.com/113530029/235420589-66dcae07-bb64-421c-a8eb-aa6b0260d447.png)
