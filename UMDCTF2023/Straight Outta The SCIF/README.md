@@ -31,3 +31,7 @@ cho ra được các thông tin như thế:
 `for i in {01..15}; do deda_parse_print scan-$i.png | grep serial; done`
 
 ![image](https://user-images.githubusercontent.com/113530029/235420589-66dcae07-bb64-421c-a8eb-aa6b0260d447.png)
+
+Để ý thấy các số trong serial khá giống ascii, extract nó ra:
+
+
