@@ -104,7 +104,7 @@ File GIF, ngon rồi. Sau đó tách các frame trong gif ra:
 
 > ffmpeg -i 0.gif -r 10 -vsync 0 Frame_%d.png
 
-Vì bước này mình không biết tool nào QR -> data nên mình ném từng ảnh 1 lên tool 😢
+Vì bước này mình không biết tool nào QR -> data nhiều cái 1 lúc nên mình ném từng ảnh 1 lên tool 😢
 
 Với 7 frame đã có, decode QR và được các data như sau:
 
