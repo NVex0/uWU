@@ -1,4 +1,4 @@
-Dựa theo đề, ta có thể hiểu các packet capture được không đúng trình tự, có 1 sự sai sót ở đây, cụ thể là thời gian. Tiến hành sort packet theo thời gian, để ý các trường data của ICMP ghép thành các từ có nghĩa :v. Nhưng mà quá nhiều packet, extract bằng tay thì khá tốn thời gian. Mình làm như sau:
+Dựa theo đề, ta có thể hiểu các packet được capture không đúng trình tự, có 1 sự sai sót ở đây, cụ thể là thời gian. Tiến hành sort packet theo thời gian, để ý các trường data của ICMP ghép thành các từ có nghĩa :v. Nhưng mà quá nhiều packet, extract bằng tay thì khá tốn thời gian. Mình làm như sau:
 
 Đầu tiên mình lấy 2 trường thời gian và data của IMCP ra:
 
