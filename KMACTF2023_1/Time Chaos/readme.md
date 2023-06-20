@@ -1,3 +1,5 @@
+![Screenshot (4287)](https://github.com/NVex0/uWU/assets/113530029/989dd4c3-b9ba-44d4-b926-5b07732e35fd)
+
 Dựa theo đề, ta có thể hiểu các packet được capture không đúng trình tự, có 1 sự sai sót ở đây, cụ thể là thời gian. Tiến hành sort packet theo thời gian, để ý các trường data của ICMP ghép thành các từ có nghĩa :v. Nhưng mà quá nhiều packet, extract bằng tay thì khá tốn thời gian. Mình làm như sau:
 
 Đầu tiên mình lấy 2 trường thời gian và data của IMCP ra:
