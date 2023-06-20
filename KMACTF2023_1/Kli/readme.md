@@ -1,7 +1,5 @@
 ![Screenshot (4296)](https://github.com/NVex0/uWU/assets/113530029/cdd6a816-0cde-4ae4-9638-ff7279c1e9cd)
 
-## Solve:
-
 Mình thử build profile cho máy, nhưng nhận được hint "nghĩ đơn giản thôi" thì mình quyết định strings grep.
 
 Sau 1 hồi mò thử từng kiểu flag không được thì mình quyết định mò theo extension, và thấy được file tên `fl4c.txt`.
