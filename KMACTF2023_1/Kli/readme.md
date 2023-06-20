@@ -17,4 +17,14 @@ Grep theo `fl4c.txt`, mình tìm thấy 2 dòng encrypt fl4c.txt sử dụng ope
 
 ![Screenshot (4299)](https://github.com/NVex0/uWU/assets/113530029/70530717-68f7-45b5-a404-0b01a11aeaf5)
 
-để ý tới option `-pdkdf2`, khi thêm option này vào openssl, key mà ta set ở option `-k` sẽ không lấy làm key mã hoá trực tiếp, mà nó chỉ là pass để dẫn xuất khoá dựa trên thuật toán pdkdf2. Nên dù có dùng key như nào thì phần `KMACTF` (phần đầu đã biết - flag format) của flag sẽ luôn trả về 1 kết quả.
+Mặc định khi mã hoá bằng openssl, luôn có 1 đoạn base64 ở đầu kèm theo là `U2FsdGVkX1` hay ở Ascii là `Salted_`, đi sau đó là 8 random bytes của Salt. Openssl yêu cầu như thế để có thể tương tác được với Encrypted file. 
+
+Ta grep để xem có bất kì đoạn encrypted nào không:
+
+![Screenshot (4303)](https://github.com/NVex0/uWU/assets/113530029/a16aabf4-a8f1-473b-8ad7-46afa4d85c08)
+
+:v Vậy là có Encrypted text rồi, decrypt thử theo 2 lệnh openssl ở trên, tuy nhiên chỉ có 1 cái là thành công. Và sau khi decrypt, ta có được flag:
+
+![Screenshot (4304)](https://github.com/NVex0/uWU/assets/113530029/114bcea7-283f-4c10-9541-d3b2fd15f007)
+
+Flag: `KMACTF{5tr1n9_15_$1mply_too_0v3r_p0w3r}`
