@@ -1,10 +1,5 @@
 ![Screenshot (4296)](https://github.com/NVex0/uWU/assets/113530029/cdd6a816-0cde-4ae4-9638-ff7279c1e9cd)
 
-Tóm tắt cách giải :( 
-> Src: kakuja
-
-![image](https://github.com/NVex0/uWU/assets/113530029/31141fbd-31f3-4371-85be-be67dbc2223b)
-
 ## Solve:
 
 Mình thử build profile cho máy, nhưng nhận được hint "nghĩ đơn giản thôi" thì mình quyết định strings grep.
