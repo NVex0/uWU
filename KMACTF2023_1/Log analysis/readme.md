@@ -25,7 +25,7 @@ Phần Content của Flag là 1 md5 hash của 1 chuỗi ghép bởi:
 
 Dễ thấy ngay bên dưới phần general của event, ta có được thời gian của nó:   ![Screenshot (4289)](https://github.com/NVex0/uWU/assets/113530029/05b29957-3b9d-49af-9cfc-9577e161e309)
 
-Nhìn các event phía trước là các info khi khởi tạo process, ta có được PID của process này: ![Screenshot (4291)](https://github.com/NVex0/uWU/assets/113530029/cc5bb7c9-8451-4302-bade-c9916f82348a)
+Nhìn ngay các event trước là event record khi khởi tạo process, ta có được PID của process này: ![Screenshot (4291)](https://github.com/NVex0/uWU/assets/113530029/cc5bb7c9-8451-4302-bade-c9916f82348a)
 
 Sử dụng log Security.evtx, tra vào khoảng thời gian khởi gian xung quanh lúc khởi tạo process (sai số 1s gì đó :v), ta có được tên người dùng (lấy tên đầy đủ, DOMAIN or WORKGROUP + \USERNAME):
 
