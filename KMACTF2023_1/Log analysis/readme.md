@@ -27,7 +27,7 @@ Dễ thấy ngay bên dưới phần general của event, ta có được thời
 
 Nhìn ngay các event trước là event record khi khởi tạo process, ta có được PID của process này: ![Screenshot (4291)](https://github.com/NVex0/uWU/assets/113530029/cc5bb7c9-8451-4302-bade-c9916f82348a)
 
-Sử dụng log `Security.evtx`, tra vào khoảng thời gian khởi gian xung quanh lúc khởi tạo process (sai số 1s gì đó :v), ta có được tên người dùng (lấy tên đầy đủ, DOMAIN or WORKGROUP + \USERNAME):
+Sử dụng log `Security.evtx`, tra vào khoảng thời gian xung quanh lúc khởi tạo process (sai số 1s gì đó :v), ta có được tên người dùng (lấy tên đầy đủ, DOMAIN or WORKGROUP + \USERNAME):
 
 ![Screenshot (4292)](https://github.com/NVex0/uWU/assets/113530029/c7ceee71-9fcc-4ce3-aa89-af8f7c6d7bb2)
 
