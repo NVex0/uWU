@@ -18,7 +18,7 @@ Bây giờ mình sẽ mổ xẻ phần flag:
 
  `KMACTF{$(([System.BitConverter]::ToString(([System.Security.Cryptography.MD5]::Create()).ComputeHash(([System.Text.Encoding]::UTF8.GetBytes(((Get-Process -Id $PID).Id.ToString()+[System.Security.Principal.WindowsIdentity]::GetCurrent().Name+(Get-Date).ToString())))))).Replace('-', '').ToLower())}`
 
-Phần Content của Flag là 1 md5 string của:  
+Phần Content của Flag là 1 md5 hash của 1 chuỗi ghép bởi:  
 + PID của tiến trình chạy ps script này.
 + Tên người dùng hiện tại của phiên làm việc.
 + Thời gian hiện tại - lúc log được tạo.
