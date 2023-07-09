@@ -1,5 +1,7 @@
 ![Screenshot (4446)](https://github.com/NVex0/uWU/assets/113530029/3f69c15c-fbd0-421a-9994-13e27c76e23c)
 
+#### Solve:
+
 Đề bài cung cấp 1 file NTUSER.DAT. Và với mô tả của bài thì ta hiểu máy Hoà bị đặt persistence rồi, cụ thể là đặt trong autostart registry key. Mình load file vào Registry Viewer và tìm tới path: `Software\Microsoft\Windows\CurrentVersion\Run`:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/63dce788-68d7-4894-927b-d6b3b4e4a360)
