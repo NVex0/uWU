@@ -143,7 +143,7 @@ Vậy nên với file pcap của đề, mình sẽ tiến hành decrypt data mà
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/027fd81a-9998-42ca-8b0e-884402d47b91)
 
-Sau đó decrypt data bên client gửi bằng cách cắt đi 16 bytes đầu làm IV, key trong code và phần còn lại là encrypted data. Ta bắt đầu với stream nhiều data nhất trước:
+Sau đó decrypt data bên client gửi bằng cách cắt đi 16 bytes đầu làm IV, key trong code và phần còn lại là encrypted data. Mình thử decrypt từng cái 1 và cuối cùng có được thứ mình cần ở stream POST lượng data lớn nhất. 
 
 Phần data ta phải xử lý qua bằng URL decode trước. Sau đó mình decrypt với Cyberchef:
 
