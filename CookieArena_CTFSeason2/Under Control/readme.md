@@ -153,6 +153,6 @@ Phần data ta phải xử lý qua bằng URL decode trước. Sau đó mình de
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/0449648b-a836-47b3-93db-c23d9185768a)
 
-Scan và ta được Flag:
+Scan và mình có được Flag:
 
 Flag: `CHH{D0n't_w0rRy_n0_st@r_wh3rE}`
