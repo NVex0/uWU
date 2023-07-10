@@ -134,7 +134,7 @@ Chung quy lại là code này thực thi việc tải xuống file ps1 kia và l
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/d4462edb-e086-40ed-9fde-5a9b91215a16)
 
-Vẫn là base64 và deflate compress :v, ta làm tương tự như đoạn đầu thôi, và được 1 obfuscated code khác. Mình sử dụng `PowerDecode` để deobfuscate. 
+Vẫn là base64 và deflate compress :v, ta decode và được 1 obfuscated code khác. Mình sử dụng `PowerDecode` để deobfuscate. 
 
 Đoạn code sau khi deob nhìn khá rõ ràng. Cụ thể code này sử dụng AES-CBC Zero Padding với key có sẵn trong code. IV lấy 16 bytes nối với data sau khi encrypt. 
 Sau đó là tạo stream để POST data lên kết nối được thiết lập trước. 
