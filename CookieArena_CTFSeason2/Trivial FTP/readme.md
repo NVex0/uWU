@@ -31,7 +31,7 @@ Kế đó, `192.168.25.1` gửi lại acknowledgement message tới data mà nó
 
   ![Screenshot (4473)](https://github.com/NVex0/uWU/assets/113530029/23d634a4-82d4-4456-a97a-7043d720db49)
 
-Tương tự theo sequence, các gói sau cũng y vậy thôi :v, bây giờ mình tiến hành dump data mà `192.168.25.135` gửi trả `192.168.25.1`, sau đó mình loại bỏ 2 field là opcode và block number của từng gói đi:
+Tương tự theo sequence, các gói sau cũng y vậy :v, bây giờ mình tiến hành dump data mà `192.168.25.135` gửi trả `192.168.25.1`, sau đó mình loại bỏ 2 field là opcode và block number của từng gói đi:
 
 `tshark -nr arenas2-forensics-trivialFTP/TrivialFTP.pcapng -Y 'udp.stream eq 26 && ip.src == 192.168.25.135' -T fields -e data.data > data.txt`
 ```
