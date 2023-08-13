@@ -1,4 +1,4 @@
-![Screenshot (4789)](https://github.com/NVex0/uWU/assets/113530029/f11b9ad5-e9c7-4e10-9d56-4efd585c89c4)Took me very long time to solve :(
+Took me very long time to solve :(
 
 ![Screenshot (4777)](https://github.com/NVex0/uWU/assets/113530029/a14426a6-2a60-4dea-9539-83ee29c11afb)
 
