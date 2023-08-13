@@ -30,9 +30,18 @@ Extracted it, using `Virus Total` to know what it is:
 
 See the label? That's the rootkit we looking for. 
 
+But 2 files i got is PE32 file, i have no ideas what to do with it. Luckily, when checking with [Autoruns](https://download.sysinternals.com/files/Autoruns.zip), i find 1 more suspicious thing:
+
+![Screenshot (4790)](https://github.com/NVex0/uWU/assets/113530029/8d539e45-9bf0-4323-afea-663b1ed65d76)
+
+i try to find and extract it: 
+
+![Screenshot (4791)](https://github.com/NVex0/uWU/assets/113530029/7027360f-0eb4-42a3-801b-de0884d01547)
 
 
-Decompiled with `DnSpy`:
+Now checking what file with [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) or simply `file` in Linux. Yep, it's a `.NET` file, easier for me. Decompiled with `DnSpy`:
+
+K, `Disk_Encoder`, nice one. Seem we get the right ransomware file.
 
 I can summarize whats the main things it does:
 
@@ -57,6 +66,7 @@ Key is sha256sum of the value that generated randomly from `__KEYGEN` function:
 But in the `__Main` function, this value was written to registry path: `Software\Wow6432Node\Microsoft\Active Setup\Status` named `INFO`.
 
 Open `regedit`, following the path and we got the value:
+
 `HF48K!SP%hHudfQrk?*wvYvn*F-$DrooyKUdie0ZcY82OR%bW6$Mbk15hR?E@bLZ/q(TL!IGTmTXm/ZtKtqU0bNNfl(RgwjAMj9uWyQjy7)*QeTo/b)T8+wnc4*x+$wuCTKDF1XjcHs/iY&ASeYF2PPV9WSo9qr7KV9?UPjOEg+0V3ED7!fkpr+!E@Q6i5w8m84Nm=3C(KBVYl=GRO3=LHSqd-)e-z2V7FNj-+o8Hcpfqtlp$KpUCxxfqO6nFYDSe3lTXmHZx%/6p9A7kbo!KiSJe5)6HA25YWA!HSRaCPtH5+@3O=D16PH(kb*ptXSxPJhS8NzSJN8(@Lbn)MsI?B-IOFZ2dz41&&/vgt%AW7rseMGZAXvg2K0NKZD3!&*hgG-/S2HWRs8Mgd0C-A2FDY=9T1lHpONZ&KMYONGUQYPKYn34vB4!R6dHHLwoR=3DeiQWQc*7)i*1J@l2?3jogZIN3EQCopCRsM2$XhoSN&)5%y-Rx%qlnPtFZCpLL8TbguJ?KvenPQbjgZSFF=cu=n1cpxnU+cGb0oZXoBHBmCWW*Kv=7kFMgwc/)4ekIJw9K=6+A(nE/aH&ReofBnkdX%(DMhd7uu)dcjM*a3=*?BUFpfxlQ=isvSmQE22po2hVg1q5SzEUnvgVw$l37/ruLY4K?&7vBhXRr=v**+Tn%OEA9QqOR-4wL9JI&g8V+gSFYP1xRx//vDz?T3Y3dtdDzxF5@n+fG?wl(-ztl/&rG@AIJM*PIE/UCPdxJ&715k9xeOCVE1Rkx9?!x?v0zyWCEbj2sBkpHS8tCZ0(JqKe9fuPSq=MXHCGN7tD2W0CQzceBb7XU0qJn/Pw3TjBBYRAQ1fS3xQ!@INKCPO+5z/un)qVs&Wi!yA/hcOW(pqtk3Tf1FtnFsSZgujXLKx7a4AOHVzxB+&QJVJ7wKqmZ6dSfyj!/+L8+6T23EYgc&mNvCQLkzxArKhqb46g8@4J2LZZBdDs9JKdUPtdiYZQRKR4Z0b-V/unOchk0$JGvEOh=DWLLc?kmn/s%rAYCFW%luO/4I0rOSsM&64VdP9/%KAyj@qI$8Ep4T(c*deDzdWT(2vK!2%9SdAbtnf/or1dODez!bgA86Qn!324QgUK$SWbTr5Y-mlHy)F/X&WiV%AjNjo$7yyIWqm(3DfTsICWUI*%x!gUJ9@&R!N7C/nW!d8IeKLUnC@N+1PFuuP&Se-k1p1)$vQ0s2i$X3mnzL3H&yEmuHMfzqEgeXd@gSd/8MsMTY5+HzUGx+oCkOV6i8BByBj=ZxGg5*V7G/TWYVY=V?5n5bcS?ugALqlR@5ogs*Y9t4(r%-hNjB30S&R-V*iKfUvneChp3+ehw&)Bf7X-NSnK98-)oqL3cNeYIfN/o+hstWDWCPqlok?M3l0tDoBN3xEips/=tfhV8(nn4z$Y=xP/QRrt1r*=$T*&Rr4gXq+ICza7-N*bxzNFhMSXBWVBqhfoGrVM(hBg5H@o+6un3kZOG6lEYhfAU@psT91e+ygPx3WaX1gRy4VFHQiXFR*kBAL/oTUEFQwEEJnZjL4tANZnrjkCbdZx!(Nwse8DhbMiIRA-0I*%jRj*yvYF6R0y+-QJ($4FZ0LwB+fZimZSpeNtiZ-&F3UQxkrJA+C9a5r5F!97Q-tT+hJj8uys/7=tg(=oXVZrkm/6!eounO3GKAZPaHYdPg%p5?ZK!Vk%wB6bpZvdFDF1D)jft7NP?(cEsZA@Fe7R19hIR?xBj%XMaQl@l)oDHU&0w26PY5XyT!=RjaNvKM2DuQ0c!LbL@3Jg$3jmOhz0tv)mQUdL3/)(p)GgBdbNeM8m0qa2$yhzkCg-WNMq4Pf?!O+?xDk7FlVh!d8w)xUEiQimjHJ!R8fO3*zmzdF!Nxu-3-L)bmwH(amt2bkq%wpTGG0-1W?nsh+7tk5k(Pj2MYTcYF6X)m/nHa/xUNOFoImlj1ASs=u1N9G5!XwwmxuFob0SsIP4BdOD94)uFo1)+NZUTJ!?npq+lg&IB4xk6$07vD(FeCr-(1NaBf-iVSRi!Wpc78tX+RJBkpwQ`
 
 Sha256 it, we get the key. 
