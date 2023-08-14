@@ -30,11 +30,7 @@ Extracted it, using `Virus Total` to know what it is:
 
 See the label? That's the rootkit we looking for. 
 
-But 2 files i got is PE32 file, i have no ideas what to do with it. Luckily, when checking with [Autoruns](https://download.sysinternals.com/files/Autoruns.zip), i find 1 more suspicious thing:
-
-![Screenshot (4790)](https://github.com/NVex0/uWU/assets/113530029/8d539e45-9bf0-4323-afea-663b1ed65d76)
-
-i try to find and extract it: 
+But 2 files i got is PE32 Rootkit file, i have no ideas what to do with it. Since the rootkit hides files and processes, when opened OVA with `7z`, i see hidden folder `sys`. The second .config file contains nothing, so i start with the first one. Extract it:
 
 ![Screenshot (4791)](https://github.com/NVex0/uWU/assets/113530029/7027360f-0eb4-42a3-801b-de0884d01547)
 
