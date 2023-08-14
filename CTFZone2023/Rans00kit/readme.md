@@ -67,7 +67,7 @@ Open `regedit`, following the path and we got the value:
 
 Sha256 it, we get the key. 
 
-Next is the salt, it's array in `__CIPHER` function. With Cyberchef, i convert the array to hex. But first, you need to swap the `Byte.MaxValue` to `255`:
+Next is the salt, it's array in `__CIPHER` function. With Cyberchef, i convert the array to hex. But first, you need to swap the `Byte.MaxValue` with `255`:
 
 ![Screenshot (4783)](https://github.com/NVex0/uWU/assets/113530029/85597876-8ab8-442a-b2cb-e0441e838bd7)
 
