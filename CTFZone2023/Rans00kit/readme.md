@@ -16,13 +16,13 @@ it's very hard to detect which one is malicious. I used [Kaspersky Virus Removal
 + C:\Program Files\VMware\VMware ToolsVMware VGAuth\agony.sys
 + C:\Program Files\VMware\VMware ToolsVMware VGAuth\VGAuthCGI.exe
 
-Went to above path on the PC, i can't see that two suspicious files despite enabling show all the files (include system files, hidden files). 
+Go to above path on the PC, i can't see that two suspicious files despite enabling show all the files (include system files, hidden files). 
 
 So i try finding it dynamically. I opened the OVA files with `7z`. Following the path, and finally found them:
 
 ![Screenshot (4779)](https://github.com/NVex0/uWU/assets/113530029/76f485f1-4f17-42d0-9e06-7f7deffcbb7c)
 
-Extracted it, using `Virus Total` to know what it is:
+Extract it, using `Virus Total` to know what it is:
 
 ![Screenshot (4767)](https://github.com/NVex0/uWU/assets/113530029/fd0dcec8-8f04-4104-884b-90a14832a067)
 
@@ -30,12 +30,12 @@ Extracted it, using `Virus Total` to know what it is:
 
 See the label? That's the rootkit we looking for. 
 
-But 2 files i got is PE32 Rootkit file, i have no ideas what to do with it. Since the rootkit hides files and processes, when opened OVA with `7z`, i see hidden folder `sys`. The second .config file contains nothing, so i start with the first one. Extract it:
+But 2 files i got is PE32 Rootkit file, i have no ideas what to do with it. Since the rootkit hides files and processes, when opened OVA with `7z`, i see hidden folder `sys`. The second .config file contains nothing, so i start with the first one:
 
 ![Screenshot (4791)](https://github.com/NVex0/uWU/assets/113530029/7027360f-0eb4-42a3-801b-de0884d01547)
 
 
-Now checking what file with [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) or simply `file` in Linux. Yep, it's a `.NET` file, easier for me. Decompiled with `DnSpy`:
+Now checking what file with [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) or simply `file` in Linux. Yep, it's a `.NET` file, easier for me. Decompile it with `DnSpy`:
 
 K, `Disk_Encoder`, nice one. Seem we get the right ransomware file.
 
@@ -43,7 +43,7 @@ I can summarize whats the main things it does:
 
 + Genarates a 2048 bytes key from ASCII set.
 + Displays a window to notice the user that all the files is encrypted. Require the user to pay money for recovery key.
-+ Encrypt file recursively in it's current directory. Then modified encrypted file name by appending "config".
++ Encrypt file recursively in its current directory. Then modified encrypted file name by appending "config".
 
 #### Now is the decryption time. 
 
@@ -67,7 +67,7 @@ Open `regedit`, following the path and we got the value:
 
 Sha256 it, we get the key. 
 
-Next is the salt, it's array in `__CIPHER` function. With Cyberchef, i convert it to hex. But first, you need to swap the `Byte.MaxValue` to `255`:
+Next is the salt, it's array in `__CIPHER` function. With Cyberchef, i convert the array to hex. But first, you need to swap the `Byte.MaxValue` to `255`:
 
 ![Screenshot (4783)](https://github.com/NVex0/uWU/assets/113530029/85597876-8ab8-442a-b2cb-e0441e838bd7)
 
@@ -77,15 +77,15 @@ Convert to hex:
 
 ![Screenshot (4784)](https://github.com/NVex0/uWU/assets/113530029/1bb5ead1-1c8e-43a7-ad7a-2f63d0027e84)
 
-Now, deriving `PBKDF2 key` with key, salt we just got - which do the samething as `rfc2898derivebytes` function:
+Now, deriving `PBKDF2 key` - which do the samething as `rfc2898derivebytes` function with key, salt we just got:
 
-> `rfc2898derivebytes` is a streaming-response object. So when you take first 32 bytes as the key, the following 16 bytes gonna be the iv. By this reason, i will take 48 bytes from Derive Key, which means the length is 384.
+> `rfc2898derivebytes` is a streaming-response object. So when you take first 32 bytes as the key, the following 16 bytes gonna be the iv. By this reason, i will take 48 bytes from Derive Key, which means the length (or key size) is 384.
 
 ![Screenshot (4785)](https://github.com/NVex0/uWU/assets/113530029/d44ba0bc-002c-4315-912c-d0e163494d4f)
 
-Concatnate the result as i describe above, we will get the AES key and iv.
+Concatnate the result as i described above, we will get the AES key and iv.
 
-We got only 1 file has "config" extension. 
+We have only 1 file has "config" extension. 
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/3b3764b4-6473-4ecf-be63-1ddae2911da2)
 
@@ -93,7 +93,7 @@ Use as ciphertext and decrypt it, i got a file with MZ header:
 
 ![Screenshot (4788)](https://github.com/NVex0/uWU/assets/113530029/36b72fbb-4165-4548-9df8-f942fbec65f4)
 
-Find the flag format in that file, we got the flag:
+Find the flag format in that file, we will get the flag:
 
 ![Screenshot (4789)](https://github.com/NVex0/uWU/assets/113530029/bf271dd1-d475-4897-b3d1-78b3358fbd37)
 
