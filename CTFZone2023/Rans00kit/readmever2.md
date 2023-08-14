@@ -42,7 +42,7 @@ Yeahh, as you can see, it calls `VGAuthCGI.exe` with some parameters look like o
 
 There're 2 ways here to know:
 
-+ First is, the `VGAuthCGI.exe` has been call and execute the `agony.sys`, no directory specified in `agony.sys`. Gotcha, they are at the same directory. Open `cmd` in that path, execute `VGAuthCGI.exe` (still appears when you enter its name and tab for choosing file), you will see it display help table, and when you execute with `-h` option, you will know what the batch did.
++ First is, the `VGAuthCGI.exe` has been call and execute the `agony.sys`, no directory specified in `agony.sys`. Gotcha, they are at the same directory. Open `cmd` in that path, execute `VGAuthCGI.exe` (still appears when you enter its name and tab for choosing file), you will see it displays help table, and when you execute with `-h` option, you will know what the batch did.
 
 + Second and the last way, reverse it. I dont think that a good point in a forensics challenge. But why not, trying loses nothing. As i told above, since they're at the same dir, go find and extract it. But i see no file like that in `VMware ToolsVMware VGAuth` dir. Yep, cuz rootkit hid it right? The only way to take it is to using `7z` on the OVA file, and now we can see and extract it. Open in `IDA`, provides us a lot of things:
 
