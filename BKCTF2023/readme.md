@@ -1,6 +1,6 @@
 1 misc duy nhat.
 
-Đầu tiên, đề cho 1 file text toàn hex.
+Đầu tiên, đề cho 1 file chứa toàn hex text.
 Decode nó ra.
 
 ![Screenshot (4859)](https://github.com/NVex0/uWU/assets/113530029/1e828dbd-4429-47e2-99e1-7896f4c017f7)
