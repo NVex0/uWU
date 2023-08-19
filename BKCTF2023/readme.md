@@ -65,7 +65,7 @@ Drive cho ta 1 file wave của bài Hurricaneger Sanjou, nostalgic XD. Nghe tớ
 
   ![image](https://github.com/NVex0/uWU/assets/113530029/464a8100-69b9-46d8-b660-d264c415a2b7)
 
-Mình dùng script sau để bruteforce kí tự đó:
+Link paste bị thọt mất 1 kí tự đầu. Mình dùng script sau để bruteforce kí tự đó:
 
 ```
 import requests
