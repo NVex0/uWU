@@ -1,6 +1,6 @@
 ![image](https://github.com/NVex0/uWU/assets/113530029/ebbb6b58-bf26-4e85-8079-a2c5071c4c60)
 
-Dựa theo description, ta biết được ta phải đi tìm 1 con malware autostart. Mình thử kiểm tra trong registry và scheduler task đều không thấy, và tới Startup thì mình thấy 2 file shortcut:
+Dựa theo description, ta biết được ta phải đi tìm 1 con ransomware autostart. Mình thử kiểm tra trong registry và scheduler task đều không thấy, và tới Startup thì mình thấy 2 file shortcut:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/f86d4165-1b51-4af0-93c5-1de7b2b56381)
 
