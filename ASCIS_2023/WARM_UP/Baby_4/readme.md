@@ -17,3 +17,37 @@ Tiếp tới, để xem cái "malicious" mà process này đang làm là gì, m�
 Có thể dễ dàng nhìn thấy full path của module đầu tiên:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/3725d688-2826-4ffa-80a1-2a8b1439e6b6)
+
+Mình sẽ extract file thực thi ra khỏi dump để phân tích:
+
+- Đầu tiên nhìn offset của module CobaltStrike, mình extract dãy bytes theo offset đó bằng command `.writemem C:\Users\theon\OneDrive\Desktop\CobaltStrike.exe 00460000 L?00467000-00460000`:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/33145de1-9320-4f15-b8a1-17a0a91c6cf9)
+
+- Tiếp theo, dùng [PE Dump Fixer](https://github.com/skadro-official/PE-Dump-Fixer) để áp offset ban đầu của module trong virtual space vào file ta dump ra ở trên:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/b49014b5-82f2-45b4-9e5c-51229d85b638)
+
+- Cuối cùng là unmap địa chỉ ảo khỏi file bằng [PE Unmapper](https://github.com/hasherezade/pe_unmapper):
+
+![image](https://github.com/NVex0/uWU/assets/113530029/62efcbff-9d5c-4956-90e6-298c8000d746)
+
+Ta đã dump thành công file thực thi từ minidump, load vào ida:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/993e6cf3-250a-429a-ae53-5fd3ca475230)
+
+Đại khái là code sẽ thực hiện decrypt AES-ECB-128 với key là `pbBinary`:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/a0f6a401-3a1c-403a-af02-21e2920d1a4a)
+
+Và ciphertext là `byte_4643f8`:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/22eb88e1-ad68-46de-8f38-c7360cc7cc1c)
+
+Mình decrypt bằng Cyberchef:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/ac69a0eb-927c-4609-8265-744e1f6ea055)
+
+Flag: `ASCIS{H4v3_Y0u_7ri3d_u5ing_57RINg5_0N_M3M0RY_dUmp}`
+
+
