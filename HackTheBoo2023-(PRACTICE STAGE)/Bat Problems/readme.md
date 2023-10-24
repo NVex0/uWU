@@ -197,6 +197,6 @@ Ra cái code oneline, vẫn khá khó nhìn, ta replace thêm dấu xuống dòn
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/6a879ff2-4459-4151-bf1a-d02869d16523)
 
-Tới đây thấy luôn flag rồi nên cũng chả cần deob tiếp làm gì.
+Tới đây thấy luôn flag rồi.
 
 Flag: `HTB{0bfusc4t3d_b4t_f1l3s_c4n_b3_4_m3ss}`
