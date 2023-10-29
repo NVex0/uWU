@@ -28,3 +28,33 @@ Mình dùng `PSDecode` để deobfuscate:
 
 Code này sẽ thực hiện tải xuống con panpan.exe, mở file `final report` làm key xor và xor với các bytes trong panpan.exe (từ bytes thứ 1024, size xor là 31488). Sau khi xor thì sẽ thực thi con exe đầu ra.
 
+Tuy nhiên ta không có file `final report`, mình ngồi thử với các header của file docx, pdf,....nhưng không khả quan. Nên khi mình load vào `pebear` cùng 1 vài sample PE 64 bit khác, mình để ý:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/ad712b76-ce74-4355-83c5-995fd1aaf61f)
+
+Phần entry point của file này bắt đầu bằng 5 bytes 0, khá lạ, trong khi các file khác thì đều bắt đầu với dãy `48 83 EC 28 E8 F7 04 00 00 48 83 C4 28 E9 72 FE FF FF CC CC 40 53 48 83 EC 20 48 8B D9 33 C9 FF 15 BB 56 01 00 48 8B CB FF 15 AA 56 01 00 FF 15`, mình đem đi xor thử:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/186cf1e4-3b2a-4a63-9b7d-ce29a26ab18d)
+
+Để ý thấy `\x48\x83\xec\x28\xe8` lặp lại rất nhiều lần, mình đoán chắc rằng đây là xor key, mình xor thẳng lại với panpan.exe:
+
+```
+with open('PanCham.exe', 'rb') as f:
+    fileb = f.read()
+
+key = b"\x48\x83\xec\x28\xe8"
+offset = 1024
+size = 31488
+
+with open("final.exe", "wb") as f:
+    for i in range(len(fileb)):
+        if i in range(offset, offset + size):
+            f.write((fileb[i] ^ key[i % len(key)]).to_bytes(1, byteorder='big'))
+        else:
+            f.write(fileb[i].to_bytes(1, byteorder='big'))
+```
+
+Và load được vào ida mà không bị lỗi :v Nice. Mình tìm đến hàm main:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/ce10bc56-7731-4be1-86cf-15ee1ebc7633)
+
