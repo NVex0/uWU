@@ -1,10 +1,12 @@
+# Guessing.
+
 Chall : https://drive.google.com/file/d/1A6PQX4KitPRWyPzkN-8TVUZpShLzK2mD/view?usp=drive_link
 
 Description: I received an email from an unidentified sender who described an intriguing world. Intrigued by their narrative, I followed the link in the email, downloaded a file, and attempted to open it. To my surprise, my essential documents were suddenly encrypted. I'm now in need of assistance to recover them.
 
 
 ----
-Đề cho 1 file zip, chỉ cần mở ra nhìn đã dễ dàng nhận ra là con CVE winrar khá nổi gần đây :v, nhưng đã đổi thành zip extension. Mình sẽ vào folder bên trong và extract thẳng con bat file ra. Nội dung file bat:
+Đề cho 1 file zip, chỉ cần mở ra nhìn đã dễ dàng nhận ra là con CVE winrar khá nổi gần đây :v. Mình sẽ vào folder bên trong và extract thẳng con bat file ra. Nội dung file bat:
 
 ```
 @echo off
@@ -28,7 +30,7 @@ Mình dùng `PSDecode` để deobfuscate:
 
 Code này sẽ thực hiện tải xuống con panpan.exe, mở file `final report` làm key xor và xor với các bytes trong panpan.exe (từ bytes thứ 1024, size xor là 31488). Sau khi xor thì sẽ thực thi con exe đầu ra.
 
-Tuy nhiên ta không có file `final report`, mình ngồi thử với các header của file docx, pdf,....nhưng không khả quan. Nên khi mình load vào `pebear` cùng 1 vài sample PE 64 bit khác, mình để ý:
+Tuy nhiên ta không có file `final report`, mình ngồi thử với các header của file docx, pdf,....nhưng không khả quan, nên mình bỏ hướng này. Tuy nhiên khi mình load vào `pebear` cùng 1 vài sample PE 64 bit khác, mình để ý:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/61bdf04f-ae23-4596-9d66-749b23b84977)
 
@@ -74,7 +76,7 @@ Vì không có file version.txt, ta buộc phải tự tìm lại key. Mình đ�
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/ce8bdf12-a75b-4ef0-bfef-d79a1e181c70)
 
-+ 2 bytes reversed, theo như doc của microsoft thì `must be set to zero`, vậy là mình có 0000.
++ 2 bytes reversed, theo như doc của microsoft thì `must be set to zero`, vậy là mình có 0x0000.
 
 + Tiếp là 4 bytes ALG_ID lưu dưới dạng little endian, như đã nói trên, ở dưới mình thấy có hàm `CryptSetKeyParam` set các giá trị như cipher mode, padding mode, iv các thứ. Từ đó mình đoán rằng mã hóa này là AES, nhưng key length không rõ, nên mình sẽ thử ALG_ID của tất cả các loại length AES.
 
@@ -92,4 +94,12 @@ Rút ngắn phạm vi :v, vì là ASCII hết nên mình in thẳng char và đ�
 
 Sau khi xor mình được pbData mới sẽ là : `0802000010660000200000009d0e0433bf40f4141a030f2d8effa8b88c7e56cc459cb7bad982879478b18e53c5bb3a7478ba51be09b9e8f6892fabb3`
 
-> Mình tìm cả ngày cũng không hiểu đoạn thừa `20000000` sau bo
+> Mình tìm hiểu cả ngày cũng không hiểu đoạn thừa `20000000` sau blob là cái gì, nhưng nghĩ làm gì có key nào bắt đầu đầy 00 00 thế kia nên mình bỏ qua luôn 💀.
+
+Dựa vào dòng 47 trong main, ta lấy IV là 16 bytes cuối pbData, còn key thì như nói trên, mình skip đoạn `20000000` và lấy 32 bytes, vừa hay là nó vừa khít length của pbData khai báo trong hàm `CryptImportKey`. Decrypt với iv và key như vậy, mình khôi phục lại được ảnh và lấy flag:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/a5dd3cdd-9870-439e-8169-c88eb6e24e55)
+
+Flag: `ASCIS{What?_PANCHAM_1s_3v0lving!}`
+
+
