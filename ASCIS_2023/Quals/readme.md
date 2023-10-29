@@ -88,6 +88,8 @@ Rút ngắn phạm vi :v, vì là ASCII hết nên mình in thẳng char và đ�
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/e419ca64-3494-4173-a11c-a5895e968aa1)
 
-:)) Key đầu chứa chữ rất meaningful, hợp lý hóa hơn thì nó là key tương ứng với ALG_ID của AES_256, đúng ý mình. Mình sẽ thử với xorkey này luôn.
+:)) Key đầu hơi hơi meaningful, hợp lý hóa hơn thì nó là key tương ứng với ALG_ID của AES_256, đúng ý mình. Mình sẽ thử với xorkey này luôn.
 
+Sau khi xor mình được pbData mới sẽ là : `0802000010660000200000009d0e0433bf40f4141a030f2d8effa8b88c7e56cc459cb7bad982879478b18e53c5bb3a7478ba51be09b9e8f6892fabb3`
 
+> Mình tìm cả ngày cũng không hiểu đoạn thừa `20000000` sau bo
