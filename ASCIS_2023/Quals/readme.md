@@ -56,7 +56,7 @@ with open("final.exe", "wb") as f:
 
 Và load được vào ida mà không bị lỗi :v Nice. Mình tìm đến hàm main:
 
-![image](https://github.com/NVex0/uWU/assets/113530029/ce10bc56-7731-4be1-86cf-15ee1ebc7633)
+![image](https://github.com/NVex0/uWU/assets/113530029/59ee015a-6dd1-4eaf-b416-4d35c7c65b5c)
 
 Sau 1 khoảng thời gian rất lâu đọc code:v, mình hiểu nó thực thi như sau:
 
@@ -67,3 +67,15 @@ Sau 1 khoảng thời gian rất lâu đọc code:v, mình hiểu nó thực thi
 3. Dùng kết quả xor này, sẽ dùng để tạo key, iv,....các thứ, sau đó encrypt ảnh SensitiveData.png lại.
 
 Vì không có file version.txt, ta buộc phải tự tìm lại key. Mình để ý tới hàm `CryptImportKey`, như bước thứ 3 mình nếu trên, kết quả của xor chính là dùng trong hàm này. hàm này sẽ phải khởi tạo PUBLICKEYSTRUC BLOB header trước, xong mới đến các thông tin khác. Dựa vào Blob, mình sẽ retrieve lại key như này:
+
++ Đầu tiên là 1 byte key blob type. Theo doc của microsoft, key blob type có 8 loại. Cái này mình sẽ bruteforce vì mình không biết key là loại nào.
+
++ Tiếp đến là 1 byte version, mà theo mình đọc thì nó thường được set = 0x02:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/ce8bdf12-a75b-4ef0-bfef-d79a1e181c70)
+
++ 2 bytes reversed, theo như doc của microsoft thì `must be set to zero`, vậy là mình có 0000.
+
++ Tiếp là 4 bytes ALG_ID lưu dưới dạng little endian, như đã nói trên, ở dưới mình thấy có hàm `CryptSetKeyParam` set các giá trị như cipher mode, padding mode, iv các thứ. Từ đó mình đoán rằng mã hóa này là AES, nhưng key length không rõ, nên mình sẽ thử ALG_ID của tất cả các loại length AES.
+
+Mình brute và giải mã luôn bằng script sau:
