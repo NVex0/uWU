@@ -78,4 +78,16 @@ Vì không có file version.txt, ta buộc phải tự tìm lại key. Mình đ�
 
 + Tiếp là 4 bytes ALG_ID lưu dưới dạng little endian, như đã nói trên, ở dưới mình thấy có hàm `CryptSetKeyParam` set các giá trị như cipher mode, padding mode, iv các thứ. Từ đó mình đoán rằng mã hóa này là AES, nhưng key length không rõ, nên mình sẽ thử ALG_ID của tất cả các loại length AES.
 
-Mình brute và giải mã luôn bằng script sau:
+Mình brute thử key, trong quá trình brute mình để ý toàn bộ key đều là ASCII hết:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/c1804390-86c3-4ff1-a237-5798e6659c14)
+
+Từ đó mình rút ra type sẽ là `PLAINTEXTKEYBLOB`, tức byte đầu = 0x08.
+
+Rút ngắn phạm vi :v, vì là ASCII hết nên mình in thẳng char và được 4 key còn lại như này:
+
+![image](https://github.com/NVex0/uWU/assets/113530029/e419ca64-3494-4173-a11c-a5895e968aa1)
+
+:)) Key đầu chứa chữ rất meaningful, hợp lý hóa hơn thì nó là key tương ứng với ALG_ID của AES_256, đúng ý mình. Mình sẽ thử với xorkey này luôn.
+
+
