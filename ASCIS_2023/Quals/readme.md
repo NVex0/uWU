@@ -60,10 +60,10 @@ Và load được vào ida mà không bị lỗi :v Nice. Mình tìm đến hàm
 
 Sau 1 khoảng thời gian rất lâu đọc code:v, mình hiểu nó thực thi như sau:
 
-+ GET data từ root của evilserver, sau đó dùng 1 hàm để decode base64. Data này dễ dàng thấy trong tcp stream 7.
+1. GET data từ root của evilserver, sau đó dùng 1 hàm để decode base64. Data này dễ dàng thấy trong tcp stream 7.
 
-+ xor decoded data ở trên với 8 bytes lấy từ file `version.txt`.
+2. xor decoded data ở trên với 8 bytes lấy từ file `version.txt`.
 
-+ Dùng kết quả xor này, sẽ dùng để tạo key, iv,....các thứ, sau đó encrypt ảnh SensitiveData.png lại.
+3. Dùng kết quả xor này, sẽ dùng để tạo key, iv,....các thứ, sau đó encrypt ảnh SensitiveData.png lại.
 
-Vì không có file version.txt, ta buộc phải tự tìm lại key. Mình để ý tới hàm 
+Vì không có file version.txt, ta buộc phải tự tìm lại key. Mình để ý tới hàm `CryptImportKey`, như bước thứ 3 mình nếu trên, kết quả của xor chính là dùng trong hàm này. hàm này sẽ phải khởi tạo PUBLICKEYSTRUC BLOB header trước, xong mới đến các thông tin khác. Dựa vào Blob, mình sẽ retrieve lại key như này:
