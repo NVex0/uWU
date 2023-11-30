@@ -1,5 +1,45 @@
 ![Screenshot (4468)](https://github.com/NVex0/uWU/assets/113530029/eddf12be-de51-4e7d-9acd-4d153163be6f)
 
+## Note: Implement:
+```
+import re, os
+re_from_netascii = re.compile(b'(\x0d\x0a|\x0d\x00)')
+CR = b'\x0d'
+LF = b'\x0a'
+CRLF = CR + LF
+NUL = b'\x00'
+CRNUL = CR + NUL
+
+if isinstance(os.linesep, bytes):
+    NL = os.linesep
+else:
+    NL = os.linesep.encode("ascii")
+
+def _convert_from_netascii(match_obj):
+    if match_obj.group(0) == CRLF:
+        return NL
+    elif match_obj.group(0) == CRNUL:
+        return CR
+
+def from_netascii(data):
+    """Convert a netascii-encoded string into a string with platform-specific
+    newlines.
+
+    """
+    return re_from_netascii.sub(_convert_from_netascii, data)
+
+with open("flag.pdf", "rb") as f:
+    t = f.read()
+    
+x = b""
+
+for i in range(0, len(t), 516):
+    x += t[i+4:i+516]
+
+with open("flag_new.pdf", "wb") as f:
+    f.write(from_netascii(x).replace(b"\r\n", b"\n"))
+```
+
 #### Solve:
 
 Truyền tải tập tin qua TFTP, ta đi thẳng vào breakdown phần data trên UDP luôn :v cụ thể là ở udp stream 25:
