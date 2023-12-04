@@ -1,6 +1,3 @@
-## WU trước bị ăn đấm nên chuyển sinh làm lại cuộc đời.
-## Modified version. Not too much changes, just fix the first part to find the malware in "Forensically" way.
-
 Took me very long time to solve :(
 
 ![Screenshot (4777)](https://github.com/NVex0/uWU/assets/113530029/a14426a6-2a60-4dea-9539-83ee29c11afb)
