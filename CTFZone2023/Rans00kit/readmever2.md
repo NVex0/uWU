@@ -31,8 +31,6 @@ We know that `UpdateService.exe` is a bat originated.
 
 Now unpack with [UPX](https://upx.github.io/), we will get the original bat from it:
 
-> 2 Lazy to install, image supported by BuiHuyThang
-
 ![image](https://github.com/NVex0/uWU/assets/113530029/1b51207e-9bee-4e2a-8e3a-749343ed5233)
 
 Yeahh, as you can see, it calls `VGAuthCGI.exe` with some parameters look like options, i wonder if it was a tool or something like this.
