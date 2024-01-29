@@ -15,7 +15,7 @@ Vì description có nói tới việc đọc rules xong thì máy bị infected.
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/5eb2e3c8-f4d7-4a98-9baa-8cd658859750)
 
-Ta thấy 1 file lnk tới file Rules, lướt binary xuống xem ta sẽ có file path nó trỏ đến:
+Ta thấy file lnk tới 1 file Rules, lướt binary xuống xem ta sẽ có file path nó trỏ đến:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/fe2cf0d9-5c45-421b-af99-57164cafad9f)
 
