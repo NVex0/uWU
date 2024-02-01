@@ -33,3 +33,15 @@ Cũng tại session, mình thấy 2 trường `originalFileLastModifTimestamp` v
 Ta làm tương tự và decode LDAP timestamp ra. Ta có kết quả.
 
 > Answer: `2023-07-24 09:53:23`
+
+### 5. The attacker wrote a data extortion note after exfiltrating data. What is the crypto wallet address to which attackers demanded payment?
+
+Trong code java có pass zip, nhập pass vào link paste ở trên (chưa hiểu sao pass zip lại nhập vào đấy làm gì :v). Ta access được contact information và có đáp án.
+
+> Answer: `0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca`
+
+### 6. What's the email address of the person to contact for support?
+
+Cũng trong note đó, ta có được email.
+
+> Answer: `CyberJunkie@mail2torjgmxgexntbrmhvgluavhj7ouul5yar6ylbvjkxwqf6ixkwyd.onion`
