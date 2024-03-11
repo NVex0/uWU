@@ -1,4 +1,4 @@
-![image](https://github.com/NVex0/uWU/assets/113530029/71e6b8da-92cc-4a94-bdd8-61c11a283d51)Đề cấp 1 file pcap, đại khái là nó truyền file bằng cách zip, set password rồi base64 lại. Khá troll vì không đọc được trường :(. Mình code quick script sau để dump data ra:
+Đề cấp 1 file pcap, đại khái là nó truyền file bằng cách zip, set password rồi base64 lại. Khá troll vì không đọc được trường :(. Mình code quick script sau để dump data ra:
 
 ```
 import os
