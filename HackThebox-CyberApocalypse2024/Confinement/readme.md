@@ -155,6 +155,8 @@ Sau khi khởi tạo Object CoreEncrypter xong, tại Main, ta thấy nó gọi 
 
 > 4953
 
+> ###### Ngoài lề, sau khi đọc hết code, mình biết được các file vượt quá size mà nó xác định kia (đoạn if), thì nó chỉ mã hóa byte đầu thôi, điều này cũng clear cho mình hơn tại sao lại có ransomware troll thế :v
+
 Derive key thôi!
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/f51b1688-900f-4cc8-a7d4-32901c69899f)
