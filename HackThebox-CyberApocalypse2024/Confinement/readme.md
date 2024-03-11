@@ -54,11 +54,11 @@ Sussy XD, sau whoami là 1 loạt các command như sau:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/8ae53a7a-b009-4077-a74f-94f5c30f5a9f)
 
-Tổng kết lại là sau khi có shell, attacker tải về zip chứa 1 mớ các exe gì gì đấy. Ta có thể xem đầy đủ trong prefetch của 7z:
+Tổng kết lại là sau khi có shell, attacker check info domain, ip,... tải về zip chứa 1 mớ các exe gì gì đó. Ta có thể xem đầy đủ trong prefetch của 7z:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/9566e75a-5571-4138-8195-8ee5679176f6)
 
-Sau đó chạy 1 số con exe trong đấy, sau đó gỡ Windows Defender đi.
+Attacker chạy 1 số con exe trong đấy, sau đó gỡ Windows Defender đi.
 
 Sau khi chạy 1 số exe trong này, attacker đã xóa file zip và các exe liên quan trong Documents, nên lúc đấy mình không nghĩ ra hướng nào nữa.
 
