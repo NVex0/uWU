@@ -2,7 +2,7 @@
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/9f9e7c66-d7d5-46ba-8024-e59fd036ef10)
 
-Đại khái là reverse xong base64 cái biến dài ngoằng ở trên, sau đó iex nó:
+Đại khái là reverse xong decode base64 cái biến dài ngoằng ở trên, sau đó iex nó:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/e305d026-61b6-47c6-aa02-0d6c1e1b50fe)
 
