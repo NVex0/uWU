@@ -1,4 +1,4 @@
-![image](https://github.com/NVex0/uWU/assets/113530029/5c987cd1-3a65-4a05-80df-d04ebe46156f)Đề cho 1 file ad1, load bằng `FTK Imager` và phân tích. Trong các folder Document thì file bị encrypt, 1 số file bị sửa mỗi byte đầu nên lúc đó mình chưa hiểu là ransomware kiểu gì:v Trôn VN.
+Đề cho 1 file ad1, load bằng `FTK Imager` và phân tích. Trong các folder Document thì file bị encrypt, 1 số file bị sửa mỗi byte đầu nên lúc đó mình chưa hiểu là ransomware kiểu gì:v Trôn VN.
 
 Recent các thứ cũng không có gì, nên mình chuyển qua đọc log.
 
