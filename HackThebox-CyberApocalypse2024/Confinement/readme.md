@@ -80,7 +80,7 @@ Sau khi dạo quanh google 1 đêm, mình đọc được 1 bài này:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/2842fcb7-3d75-4286-bd97-e821513affaa)
 
-Tức là vẫn còn cách để khôi phục. Mình nhận ra tiềm năng từ đây :)), mình bắt đầu google 1 số thứ liên quan và tìm hiểu được rằng, file bị detect sẽ được quarantine vào folder `/Program Data/Windows Defender/Quarantine`, từ đó người dùng có thể tùy chọn allow hoặc restore file đó.
+Tức là vẫn còn cách để khôi phục. Mình nhận ra tiềm năng từ đây :)), mình bắt đầu google 1 số thứ liên quan và tìm hiểu được rằng, file bị detect sẽ được quarantine vào folder `/Program Data/Windows Defender/Quarantine`, từ đó người dùng có thể tùy chọn remove hoặc restore file đó.
 
 Mình tìm được tool sau: https://github.com/knez/defender-dump/tree/master
 
