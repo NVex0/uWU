@@ -1,4 +1,4 @@
-![image](https://github.com/NVex0/uWU/assets/113530029/8aa8206e-18f6-40cc-b338-1736a6b9927d)C2 server, extract Exe từ Pcap ra và phân tích thôi :))
+C2 server, extract Exe từ Pcap ra và phân tích thôi :))
 
 Exe .net, mình dùng dnspy.
 
