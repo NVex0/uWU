@@ -120,7 +120,7 @@ Password ở đây là UID và Salt từ class Program:
 
   Hàm này gen ra 1 chuỗi 14 ký tự xen kẽ chuỗi và kí tự thôi.
 
-  Sau khi gen xong, ta thấy nó được truyền vào object Alert với vai trò là AttackID, khi reference, ta dễ dàng AttackID này được nhồi vào Html chứa thông báo tống tiền:
+  Sau khi gen xong, ta thấy nó được truyền vào object Alert với vai trò là AttackID, khi reference, ta dễ dàng thấy AttackID này được nhồi vào Html chứa thông báo tống tiền:
 
   ![image](https://github.com/NVex0/uWU/assets/113530029/fbc28490-1961-40a6-b9db-ee417df991aa)
 
