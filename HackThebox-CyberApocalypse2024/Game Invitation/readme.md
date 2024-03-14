@@ -90,7 +90,7 @@ End Sub
 
 Code obfuscate bằng tên biến, đọc cũng khá xuôi :v. Đại khái là nó search pattern `sWcDWp36x5oIe2hJGnRy1iC92AcdQgO8RLioVZWlhCKJXHRSqO450AiqLZyLFeXYilCtorg0p3RdaoPa` trong binary của document đang hoạt động (chính là con docm này). Khi tìm thấy pattern rồi sẽ skip pattern, lấy 13082 data đằng sau modify đi thành code js và chạy.
 
-Mình find index của pattern đó trong binary bằng `HxD`, sau đó viết 1 scirpt để lấy phần code js ra:
+Mình find index của pattern đó trong binary bằng `HxD`, sau đó viết 1 script để lấy phần code js ra:
 
 ```
 with open("forensics_game_invitation\invitation.docm", "rb") as f:
