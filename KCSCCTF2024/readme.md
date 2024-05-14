@@ -4,7 +4,7 @@
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/3eedb32e-3559-4c79-9e80-1cae2beef013)
 
-Khá nhiêu khê, đại khái là malicious macro. Ta đá qua code trước, tóm tắt lại là nó regex theo pattern để lấy đoạn binary ra, sau đó xor với đoạn binary với 1 key để tạo thành 1 con exe. Cuối cùng chạy con exe với param là 1 string được xor với key tiếp.
+Khá nhiêu khê, đại khái là malicious macro. Ta đá qua code trước, tóm tắt lại là nó regex theo pattern để lấy đoạn binary ra, sau đó xor đoạn binary với 1 key để tạo thành 1 con exe. Cuối cùng chạy con exe với param là 1 string được xor với key tiếp.
 
 Ở đây khi xor với key `4444` hoặc dùng 1 cách khác như chạy thẳng thì không ra được exe. Vì sao nhỉ?
 
