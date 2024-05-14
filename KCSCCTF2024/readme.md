@@ -33,7 +33,7 @@ with open("Acheron.exe", "wb") as f:
         f.write(int.to_bytes(data[i] ^ b"1337"[i % 4]))
 ```
 
-> Note: Việc chạy thẳng ra hay không tùy thuộc version office khớp hay không để VBA stomping có thể trigger effect được. Nếu version office khớp, nó sẽ check pcode và vba source, nếu 2 cái này không match thì nó sẽ load lại pcode lên để overwrite vba source, từ đó chạy ra `Acheron.exe` đẹp (vì xor với đúng key mà mình intended, hay đúng hơn là malware chạy bình thường :v), còn không thì sẽ ra binary xor với key sai, buộc bạn phải phân tích tĩnh như trên.
+> Note: Việc chạy thẳng ra hay không tùy thuộc version office khớp hay không (với stomping thì là office ver cũ) để VBA stomping có thể trigger effect được. Nếu version office khớp, nó sẽ check pcode và vba source, nếu 2 cái này không match thì nó sẽ load lại pcode lên để overwrite vba source, từ đó chạy ra `Acheron.exe` đẹp (vì xor với đúng key mà mình intended, hay đúng hơn là malware chạy bình thường :v), còn không thì sẽ ra binary xor với key sai, buộc bạn phải phân tích tĩnh như trên.
 
 Tiếp với DIE, ta thấy nó compiled bằng pyinstaller. Từ đây có thể decompile về python source:
 
