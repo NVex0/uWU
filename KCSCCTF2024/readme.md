@@ -8,7 +8,7 @@ Khá nhiêu khê, đại khái là malicious macro. Ta đá qua code trước, t
 
 Ở đây khi xor với key `4444` hoặc dùng 1 cách khác như chạy thẳng thì không ra được exe. Vì sao nhỉ?
 
-Như ở trên, theo report từ olevba, ta có thể thấy macro này bị sussy trong việc dùng VBA Stomping (pcode và vba source không khớp nhau).
+Như ở trên ta thấy, nó bị nghi dùng VBA Stomping (pcode và vba source không khớp nhau).
 
 Dùng `pcodedmp` để check pcode, dễ thấy biến bbb (hay xor key) đã modified và khác với vba source:
 
