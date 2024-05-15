@@ -10,7 +10,7 @@ Khá nhiêu khê, đại khái là malicious macro. Ta đá qua code trước, t
 
 Như ở trên ta thấy, nó bị nghi dùng VBA Stomping (pcode và vba source không khớp nhau).
 
-Dùng `pcodedmp` để check pcode, dễ thấy biến bbb (hay xor key) đã modified và khác với vba source:
+Dùng `pcodedmp` để check pcode, dễ thấy biến bbb (hay xor key) khác với vba source:
 
 ![image](https://github.com/NVex0/uWU/assets/113530029/17553ee8-12fe-4173-ba5d-17254385802f)
 
