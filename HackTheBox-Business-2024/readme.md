@@ -1,3 +1,5 @@
+# Counter Defensive
+
 Đi thẳng vào câu hỏi luôn nhé:
 
 ### 1.  What time did the victim finish downloading the Black-Myth-Wukong64bit.exe file? Please, submit the epoch timestamp. (ie: 168061519)
@@ -63,7 +65,50 @@ SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
 
   Script này lấy value từ key `HKCU\\software\\Classes\\Directory\\DisplayName` ra, đảo chuỗi rồi decode hex:
 
+  ![image](https://github.com/NVex0/uWU/assets/113530029/cc171e02-05b4-4a14-bde4-434523c76f56)
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/aefec5fa-66e2-4812-a6ac-fbf49c9291bf)
+
+  Tiếp tục clean code bằng `de4js`, từ script này, ta có đáp án:
+
+> CbO8GOb9qJiK3txOD4I31x553g
+
+### 5. What algorithm/encryption scheme is used in the final payload? (ie: RC4)
+
++ Hầu như các variable được assign value nhìn base64 đều là rác, ở đây mình tập trung vào các hàm tính toán:
+
+  Decode hex cái biến được assign to đùng ở trên đầu:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/53b29da5-06c4-4889-807a-f4db5b89192c)
+
+  Read value từ key như trong hình, xor với biến đã decode ở trên:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/71440053-c8a4-46d1-aea5-89d9c2694065)
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/2d47bde9-a8de-4a3a-b347-f3d5896d4044)
+
+  Cuối cùng eval result ở trên. Thực hiện tương tự với cyberchef, ta được script kế như này:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/a5686256-87fd-42ca-9fbc-7445988aa9a7)
   
+  Decode base64:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/58033ced-5fdc-4c0c-9635-e0d8cca41638)
+
+  Sau khi clean, dễ thấy script gọi `AesManaged`. Từ đó ta có đáp án.
+
+> Ans: AES
+
+### 6. What is the full path of the key containing the password to derive the encryption key? (ie: HKEY_LOCAL_MACHINE\SAM\SAM\LastSkuUpgrade)
+
+
+  
+  
+
+  
+
+  
+
 
 
 
