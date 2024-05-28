@@ -101,8 +101,99 @@ SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
 
 ### 6. What is the full path of the key containing the password to derive the encryption key? (ie: HKEY_LOCAL_MACHINE\SAM\SAM\LastSkuUpgrade)
 
++ Với code powershell, ta phân tích được:
+
+  ```
+  Hàm h1 tính md5.
+
+  Hàm s9 tìm đệ quy registry, nếu có value nào match md5 thì trả về path. Hàm s9 được gọi 1 lần trong script để tính hash match `6ca24d7c7f6f6465afb82dacd1b0c71f`.
+
+  Hàm n9 decrypt AES. 
+  ```
+
++ Ở đây mình thêm 1 dòng, nếu match hash thì print path luôn:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/94869320-8f48-478e-ad5e-2e2f1db72ce8)
+
+  Và mình có được path kèm value match cái hash đấy:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/6e8db585-ac16-46fd-8bf7-0e38aad17671)
+
+> Ans: HKEY_CURRENT_USER\software\classes\Interface\{a7126d4c-f492-4eb9-8a2a-f673dbdd3334}\TypeLib
+
+### 7. What is the attacker's Telegram username? (ie: username)
+
++ Mình modify lại script theo các value được get từ registry truyền vào, với in giá trị cuối ra thôi :v
+
+```
+[System.Net.ServicePointManager]::SecurityProtocol=@(("{1}{0}" -f'12','Tls'),("{1}{0}"-f 's11','Tl'),"Tls",("{0}{1}" -f'Ssl','3'));
+$a1=gp ((("{1}{3}{0}{4}{2}{5}" -f 'ntk','HKCU','ro',':','ntkEnvi','nment')).rEpLaCe(([cHar]110+[cHar]116+[cHar]107),'\'));
+$j2=$a1.Update;
+$F2="06bbc6ad-a624-416f-8163-30410218a149";
+$y3=[byte[]] -split ("8f575c4d35340e9eba024a9fc6078eb77b78098c8bbebdf87cc00ec4ff7ebebccdf4e76dd66209887c70c14a39808e5a8628c579595a373ce3e7e980a3f0d63065941eef41f3726f1437b55389b80117" -replace '..', '0x$& ');
+$j5=[byte[]] -split ("93b4543062046283c32adde19625f66f5c9ff9fe38f2a3cb8bef060880fb42965e132de327675e0165937992ca8a0bd8" -replace '..', '0x$& ');
+$g1=[byte[]] -split ("caea556bb7fa0634c63f7c12f1ccab1a5eecce0f45153147ff418d71e5360ecddce3c229b8c6ec9a92216cfff01ea63c" -replace '..', '0x$& ');
+function h1($j0){$v4=[System.Security.Cryptography.HashAlgorithm]::Create('md5');
+$x3=$v4.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($j0));
+$n6=[System.BitConverter]::ToString($x3);
+return $n6.Replace('-','')};
+function s9($n1,$x8){
+    $k7=gi $n1;
+    foreach($b5 in $k7.Property){
+        $u6=$k7.Name+";"+$b5;
+        $x3=h1 $u6;
+        if($x8 -eq $x3){
+            return ((gp $n1 -Name $b5).$b5)
+        }
+    }
+    foreach($n2 in $k7.GetSubkeyNames()){
+        $v8=s9 ($n1+"\"+$n2) $x8;
+        if($v8.Length -gt 0){
+            return $v8
+        }
+    }
+    return ""
+};
+function n9{
+    param([byte[]]$n3)
+    $c4=New-Object System.IO.MemoryStream($n3,0,$n3.Length);
+    $c5=New-Object Byte[](32);
+    $x2=$c4.Read($c5,0,$c5.Length);
+    if($x2 -ne $c5.Length){exit}$b5=New-Object System.Security.Cryptography.Rfc2898DeriveBytes($m0,$c5);
+    $b7=$b5.GetBytes(32);
+    $v9=$b5.GetBytes(16);
+    $h5=New-Object Security.Cryptography.AesManaged;
+    $e3=$h5.CreateDecryptor($b7,$v9);
+    $w5=New-Object IO.MemoryStream;
+    $q7=New-Object System.Security.Cryptography.CryptoStream($c4,$e3,[System.Security.Cryptography.CryptoStreamMode]::Read);
+    $q7.CopyTo($w5);
+    $w5.Position=0;
+    $y5=New-Object IO.StreamReader($w5);
+    $u9=$y5.ReadToEnd();
+    $y5.Dispose();
+    $q7.Dispose();
+    $w5.Dispose();
+    $c4.Dispose();
+    return $u9};
+$m0=s9 ((("{2}{0}{8}{5}{3}{1}{9}{6}{4}{7}"-f 'C','qIoclassesqIo','HK','e','rfac','r','e','e','U:qIosoftwa','Int')).REPlacE(([CHaR]113+[CHaR]73+[CHaR]111),[String][CHaR]92)) ("{0}{3}{5}{1}{2}{7}{4}{6}{8}" -f'6ca2','f6f6','465afb8','4d7c','cd1b','7','0c','2da','71f');
+$g11=n9 $g1;
+$j51=n9 $j5;
+$y31=n9 $y3;
+$i0="$g11`:$y31";
+echo $i0
+echo $j51
+```
+
++ Từ đây mình có được API và chat_id sau khi decrypt:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/7aaa3a26-e8b8-444d-94d1-8697e5e8fa81)
+
 
   
+
+
+  
+
   
 
   
