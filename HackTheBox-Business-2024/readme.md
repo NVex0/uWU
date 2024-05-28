@@ -1,4 +1,4 @@
-![image](https://github.com/NVex0/uWU/assets/113530029/7dacf432-6246-4093-b4e8-4bb378ef199b)# Counter Defensive
+# Counter Defensive
 
 Đi thẳng vào câu hỏi luôn nhé:
 
