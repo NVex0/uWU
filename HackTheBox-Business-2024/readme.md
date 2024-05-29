@@ -205,6 +205,10 @@ echo $j51
 
   ![image](https://github.com/NVex0/uWU/assets/113530029/96dd3f60-b895-481e-a7b6-9f31b76de18d)
 
++ Dùng `userinfo bot`:
+
+  ![image](https://github.com/NVex0/uWU/assets/113530029/29b69dc7-8bd0-4345-8df3-07c8db04a809)
+
 > Ans: Pirate_D_Mylan
 
 ### 8. What day did the attacker's server first send a 'new-connection' message? (Format: DD/MM/YYYY)
