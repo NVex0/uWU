@@ -156,3 +156,5 @@ Phần Class V, nó sẽ check điều kiện của từng ký tự trong flag, 
 Tuy nhiên phần phương trình 3 nghiệm của mình có vẻ có vấn đề, sẽ update sau :/
 
 > Why `dJ@`? why not `dBy`?
+
+On progress........
