@@ -89,7 +89,7 @@ while True:
         break
 ```
 
-Khi này, mình có thể nói là đã có toàn bộ code không bị serialize. Tại vòng lặp cuối, code không theo format global doc + V.attribute nữa nên nó lỗi, mình nhặt con `temp_mso18.pyc` ra decompile tay.
+Khi này, mình có thể nói là đã có toàn bộ code không bị serialize. Tại vòng lặp cuối, code không theo format global doc + V.attribute nữa nên nó lỗi, mình nhặt con `temp_mso18.pyc` (18, 19 gì đấy) ra decompile tay.
 
 Khi này, ta có full script như sau:
 
