@@ -149,4 +149,3 @@ Tuy nhiên phần phương trình 3 nghiệm của mình có vẻ có vấn đ�
 
 > Why `dJ@`? why not `dBy`?
 
-On progress........
